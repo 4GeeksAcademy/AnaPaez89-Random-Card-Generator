@@ -9,7 +9,8 @@ window.onload = function() {
   genCard();
   var button = document.getElementById("boton");
   button.addEventListener("click", genCard);
-
+  var resizeButton = document.getElementById("resizeButton");
+  resizeButton.addEventListener("click", resizeCard);
   setInterval(genCard, 10000);
   startCountdown();
 };
@@ -43,8 +44,7 @@ function genCard() {
   cardElement.innerHTML = `
     <div class="top-suit ${suitName}">${randomSuit}</div>
     <div class="value">${randomValue}</div>
-    <div class="bottom-suit ${suitName}">${randomSuit}</div>
-  `;
+    <div class="bottom-suit ${suitName}">${randomSuit}</div>`;
 }
 
 function startCountdown() {
@@ -58,4 +58,17 @@ function startCountdown() {
     }
     countdownElement.textContent = countdownValue;
   }, 1000);
+}
+function resizeCard() {
+  let cardWidth = document.getElementById("cardWidth").value;
+  let cardHeight = document.getElementById("cardHeight").value;
+  let cardElement = document.getElementById("card");
+
+  if (cardWidth) {
+    cardElement.style.width = `${cardWidth}px`;
+  }
+
+  if (cardHeight) {
+    cardElement.style.height = `${cardHeight}px`;
+  }
 }
